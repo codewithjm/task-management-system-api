@@ -25,6 +25,7 @@ var app = builder
 
 
 _ = app.MapTaskEndpoints();
+_ = app.MapUserEndpoints();
  
 
 try

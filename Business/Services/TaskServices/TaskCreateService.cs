@@ -18,6 +18,7 @@ public class TaskCreateService : ITaskCreateService
 
     private TaskEntity taskEntity;
     private List<TaskFileEntity> taskFileEntity;
+    private List<UserTaskEntity> _userTaskEntities;
     private readonly IEntityWork _entityWork;
     private readonly ILoggerUtil _loggerUtil;
     
@@ -29,6 +30,7 @@ public class TaskCreateService : ITaskCreateService
         {
             await _entityWork.TaskRepository.AddAsync(taskEntity);
             await _entityWork.TaskFileRepository.AddListAsync(taskFileEntity);
+            await _entityWork.UserTaskRepository.AddListAsync(_userTaskEntities);
             await _entityWork.CommitAsync();
         }
         catch (Exception ex)
@@ -41,7 +43,13 @@ public class TaskCreateService : ITaskCreateService
 
     public void SetTaskData(TaskEntity taskEntity, List<TaskFileEntity> taskFileEntity)
     {
+        throw new NotImplementedException();
+    }
+
+    public void SetTaskData(TaskEntity taskEntity, List<TaskFileEntity> taskFileEntity, List<UserTaskEntity> userTaskEntities)
+    {
         this.taskEntity = taskEntity;
         this.taskFileEntity = taskFileEntity;
+        this._userTaskEntities = userTaskEntities;
     }
 }

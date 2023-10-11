@@ -15,6 +15,7 @@ public class EntityWork : IEntityWork
     public EntityWork(TmsDbContext dbContext) => _dbContext = dbContext;
     
     public ITaskRepository TaskRepository => new TaskRepository(_dbContext);
+    public IUserTaskRepository UserTaskRepository => new UserTaskRepository(_dbContext);
     public ITaskFileRepository TaskFileRepository => new TaskFileRepository(_dbContext);
 
 

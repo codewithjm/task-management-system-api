@@ -1,5 +1,6 @@
 using System.Reflection;
 using Business.Behaviors;
+using Business.Services.Mapper;
 using Business.Services.TaskServices;
 using Business.Services.TaskServices.Interface;
 using Business.Services.User;
@@ -24,6 +25,7 @@ public static class ServiceRegistration
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<ITaskCreateService, TaskCreateService>();
         services.AddTransient<ITaskModifyService, TaskModifyService>();
+        services.AddTransient<IEntityMapper, EntityMapper>();
         
         services.AddSingleton(Log.Logger);
     }

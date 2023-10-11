@@ -3,6 +3,7 @@ using Domain.Dto.Task.Input;
 using Domain.Entities.TMS;
 using MediatR;
 using Utilities.Commons.Consts;
+using Utilities.Commons.Enums;
 using Utilities.Helpers.Interface;
 using Utilities.Wrappers.Interfaces;
 
@@ -56,19 +57,29 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand>
                 });
             } 
         }
+
+        var devs = request.input.developers.Select(x => new UserTaskEntity
+        {
+            TASK_REF = generatedId,
+            CREATED_UTC_DATE = DateTime.UtcNow,
+            USER_REF = x
+        }).ToList();
         
         _taskCreateService.SetTaskData(new TaskEntity
         {
-            ID = Guid.NewGuid(),
+            ID = generatedId,
             TITLE = request.input.task_title,
             BODY_PATH = $"{bodyPath}\\{bodyFileName}",
             CREATED_UTC_DATE = DateTime.UtcNow,
-            STATUS = request.input.task_status,
+            STATUS = (int)TaskStatusEnum.Open,
             LEVEL = request.input.task_level,
+            DUE_UTC_DATE = request.input.due_date,
             REQUESTOR = 3
-        }, taskFiles);
+        }, taskFiles, devs);
         
         await _taskCreateService.CreateTask();
+        
+        
         
         return await Task.FromResult(Unit.Value);
     }

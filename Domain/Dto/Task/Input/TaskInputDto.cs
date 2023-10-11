@@ -15,5 +15,6 @@ public class TaskInputDto
      
     public int requestor_ident { get; set; }
 
+    public List<int> developers { get; set; }
     public List<IFormFile> files { get; set; } = new List<IFormFile>();
 }

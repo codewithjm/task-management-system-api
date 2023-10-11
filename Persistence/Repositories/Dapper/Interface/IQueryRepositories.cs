@@ -8,4 +8,5 @@ public interface IQueryRepositories
 {
     ITaskRepository TaskRepository { get; }
     ITaskFileRepository taskFileRepository { get; }
+    IUserTaskRepository UserTaskRepository { get; }
 }

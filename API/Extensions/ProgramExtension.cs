@@ -116,7 +116,7 @@ public static class ProgramExtension
 
         builder.Services.AddCors(options =>
         {
-            options.AddDefaultPolicy(option => option.WithOrigins("https://localhost:3000")
+            options.AddDefaultPolicy(option => option.AllowAnyOrigin()
                 .AllowAnyMethod().AllowAnyHeader());
         });
         //builder.Services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);

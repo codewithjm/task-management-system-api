@@ -6,5 +6,5 @@ namespace Business.Services.TaskServices.Interface;
 public interface ITaskCreateService
 {
     Task CreateTask();
-    void SetTaskData(TaskEntity taskEntity, List<TaskFileEntity> taskFileEntity);
+    void SetTaskData(TaskEntity taskEntity, List<TaskFileEntity> taskFileEntity, List<UserTaskEntity> userTaskEntities);
 }

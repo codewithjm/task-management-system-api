@@ -28,7 +28,7 @@ public class TaskRemoveService : ITaskRemoveService
     private Guid fileId { get; set; }
     private Guid taskId { get; set; }
 
-    public Task RemoveAsync()
+    public Task RemoveTaskAsync()
     {
         throw new NotImplementedException();
     }

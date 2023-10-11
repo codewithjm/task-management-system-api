@@ -89,4 +89,16 @@ public sealed class FileHelper : IFileHelper
     {
         throw new NotImplementedException();
     }
+    
+    public string GetImageUrl(string imageFile)
+    {
+        var imagePath = _pathWrapper.Combine(_webHostEnvironment.ContentRootPath, imageFile);
+        return GetImageUrlBase64(imagePath);
+    }
+
+    private static string GetImageUrlBase64(string imagePath)
+    {
+        var bytes = File.ReadAllBytes(imagePath);
+        return Convert.ToBase64String(bytes);
+    }
 }

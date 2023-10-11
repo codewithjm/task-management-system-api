@@ -11,4 +11,5 @@ public interface IFileHelper
     string ReadText(string path);
     void Delete(string path);
     void Update(string current, IFormFile newFile);
+    string GetImageUrl(string imageFile);
 }

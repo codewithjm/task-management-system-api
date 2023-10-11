@@ -16,4 +16,5 @@ public class QueryRepositories : IQueryRepositories
 
     public ITaskRepository TaskRepository => new TaskRepository(_connectionFactory);
     public ITaskFileRepository taskFileRepository => new TaskFileRepository(_connectionFactory);
+    public IUserTaskRepository UserTaskRepository => new UserTaskRepository(_connectionFactory);
 }
